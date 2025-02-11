@@ -158,3 +158,16 @@ def load_game():
         print("No previous game found. Starting frsh..")
         return None
 # Lab 06 - Question 5b
+def dajust_combat_strength(combat_strength, m_combat_strength):
+    last_game = load_game()
+    if last_game:
+        if "hero" in last_game and "gained" in last_game:
+            num_stars = int(last_game.split()[-2])
+            if num_stars > 3:
+                print("  |   Increasing the monster's combat strengh since Heor so easily won last game")
+                m_combat_strength += 1
+            elif "Monster killed the" in last_game:
+                    print("   |    Increasing the hero's combat strength since you lost last game")
+                    combat_strength += 1
+            else:
+             print("    |   ... Based on your previous game, neither the hero nor the monster's combat")
